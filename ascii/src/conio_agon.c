@@ -2,17 +2,19 @@
  Title:		conio_agon.c
  Author:	Badre
  Created:	23/12/2023 
- Last Updated: 18/01/2024
+ Last Updated: 14/02/2024
 
  Modinfo:
  17/01/2024		replace getsysvar_vkeycode by kbd_code
  				added waitMsg method 
  18/01/2024		permit CTR-c on waitMsg
+ 14/02/2024   	added function valid_yesno
 */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
+#include <ctype.h>
 #include <time.h>
 #include <agon/vdp_vdu.h>
 #include <agon/vdp_key.h>
@@ -174,7 +176,7 @@ VKey vkey;
 		
 		sv->vkeydown = 0;										
 	}
-	
+
 	return saisie;
 }
 
@@ -202,11 +204,11 @@ uint8_t vdp_cursorGetXpos(void)
 {	
 	if(!sv) sv = vdp_vdu_init();
 	
-	sv->vpd_pflags = 0x00;	
+	sv->vdp_pflags = 0x00;	
 	putch(23);	// VDP command
 	putch(0);	// VDP command
 	putch(0x82);	// Request cursor position
-	while(!(sv->vpd_pflags & vdp_pflag_cursor));
+	while(!(sv->vdp_pflags & vdp_pflag_cursor));
 
 	return(sv->cursorX);
 }
@@ -215,13 +217,40 @@ uint8_t vdp_cursorGetYpos(void)
 {	
 	if(!sv) sv = vdp_vdu_init();
 	
-	sv->vpd_pflags = 0x00;	
+	sv->vdp_pflags = 0x00;	
 	putch(23);	// VDP command
 	putch(0);	// VDP command
 	putch(0x82);	// Request cursor position
-	while(!(sv->vpd_pflags & vdp_pflag_cursor));
+	while(!(sv->vdp_pflags & vdp_pflag_cursor));
 
 	return(sv->cursorY);
+}
+
+//Validate save
+bool valid_yesno(int x, int y, const char * msg)
+{
+	bool res = false;
+	char yesno;
+	
+	while(1) {
+		vdp_cursor_tab(x, y);
+		printf("%s", msg);
+		if(scanf("%c", &yesno) == EOF) return false;
+
+		if(yesno == 27) return false;
+		yesno = toupper(yesno);
+		
+		if(yesno == 'Y') {
+			res = true;
+			break;
+		}
+		else if(yesno == 'N') {
+			res = false;
+			break;
+		}
+		else continue;
+	}
+	return res;
 }
 
 

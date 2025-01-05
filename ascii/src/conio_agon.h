@@ -55,6 +55,6 @@ bool isKeyCtrl(char c);
 void initSysvar();
 uint8_t vdp_cursorGetXpos(void);
 uint8_t vdp_cursorGetYpos(void);
-
+bool valid_yesno(int x, int y, const char * msg);
 
 #endif
