@@ -11,7 +11,7 @@ Put a file to /bin directory
 **Command line:**   
 `minkey` 
 
-Press a key on minitel (GUIDE, ANNULATION, RETOUR, etc .., key is show on console Agon for debug. 
+Press a key on minitel (GUIDE, ANNULATION, RETOUR, etc ..), key is show on console Agon for debug. 
 For quit , press ENVOI key. 
 
 ### vdt
