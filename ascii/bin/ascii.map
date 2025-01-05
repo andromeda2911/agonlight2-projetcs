@@ -1,0 +1,133 @@
+Section     Base   Top    High   Length
+----------- ------ ------ ------ -------
+.libs       040045 040045             0h
+.init       040045 04006B            26h
+.fini       04006B 0400F3            88h
+.init.args  0400F3 0400F3             0h
+.init.bss   0400F3 0400FF             Ch
+.text       0400FF 0427C9          26CAh
+.data       0427C9 0427E5            1Ch
+.rodata     0427E5 04298B           1A6h
+.init_array 000000 000000             0h
+.ctors      000000 000000             0h
+.dtors      000000 000000             0h
+.fini_array 000000 000000             0h
+.bss        060000 06000C 09FFFF      Ch
+.header     040000 040045            45h
+
+Label                    Value
+----------------------   ------
+___low_bss             = 060000
+___len_bss             = 00000C
+___heaptop             = 09FFFF
+___heapbot             = 06000C
+___init_array_count    = 000000
+___ctors_count         = 000000
+___dtors_count         = 000000
+___fini_array_count    = 000000
+__stack                = 0AFFFF
+__land                 = 0400FF
+__iand                 = 040103
+__fcmp                 = 04011A
+__frameset             = 040137
+__frameset0            = 040145
+__idivu                = 040150
+__idvrmu               = 040158
+__imulu                = 040170
+__indcallhl            = 0401A0
+__ineg                 = 0401A1
+__ishl                 = 0401AA
+__ishru                = 0401D0
+__ladd                 = 040211
+__lcmps                = 040217
+__lcmpu                = 040224
+__lcmpzero             = 04022C
+__lladd                = 040237
+__lland                = 04025B
+__llcmpu               = 040298
+__llcmpzero            = 0402C2
+__llctlz               = 0402D7
+__lldivs               = 0402EF
+__lldivu               = 04033F
+__lldvrmu              = 040353
+__lldvrmu.hijack       = 04035A
+__llmulu               = 0403B1
+__llneg                = 040406
+__llshl                = 04041F
+__llshrs.hijack_llshru = 04044D
+__llshrs.finish        = 04046C
+__llshru               = 040470
+__llsub                = 04048A
+__lshrs.hijack_lshru   = 0404B8
+__lshru                = 0404C7
+__ior                  = 0404D7
+__setflag              = 0404EE
+__ixor                 = 0404FD
+_vdp_vdu_init          = 040514
+_vdp_clear_screen      = 04051D
+_vdp_cursor_tab        = 040534
+_vdp_cursor_enable     = 04055E
+_sys_vars              = 060000
+_vdu_clear_screen      = 0427C9
+_vdu_cursor_tab        = 0427CA
+_vdu_cursor_enable     = 0427CD
+__stdio_init           = 040583
+_stdin                 = 0427D0
+_stdout                = 0427D5
+_stderr                = 0427DA
+_fputc                 = 0405D5
+_fput_char             = 040665
+_npf_vpprintf          = 04068C
+JTI0_0                 = 0427E5
+JTI0_1                 = 042803
+JTI0_2                 = 042848
+JTI0_3                 = 042869
+JTI0_4                 = 042881
+JTI0_5                 = 042899
+_npf_utoa_rev          = 041DF6
+_printf                = 041EBE
+_vprintf               = 041EDD
+_npf_putc_std          = 041EFD
+_.str                  = 0428B1
+_.str.1                = 0428B5
+_.str.2                = 0428B9
+_free                  = 041F0D
+__alloc_base           = 060003
+_getch                 = 041FFB
+_mos_puts              = 041FE2
+_mos_sysvars           = 042204
+_mos_fputc             = 04226D
+_outchar               = 0424B8
+_putchar               = 0424BF
+_puts                  = 0424EE
+___null_literal_str    = 0428BD
+___end_of_line_str     = 0428C4
+__sbrkbase             = 0427DF
+__start                = 040045
+skip._abort            = 0400A5
+_exit.sp               = 0400A6
+_clear_bss             = 0400F3
+exit_functions         = 0427E2
+_isKeyCtrl             = 04251A
+_waitMsg               = 04257C
+_main                  = 042599
+_printAscii            = 042658
+_sv                    = 060009
+_.str.3                = 0428C6
+_.str                  = 0428CD
+_.str.1.1              = 042901
+_.str.3.2              = 042919
+_.str.4                = 04291D
+_.str.6                = 042924
+_.str.7                = 04292D
+_.str.8                = 042930
+_.str.9                = 042939
+_.str.10               = 042941
+_.str.11               = 042946
+_.str.12               = 04294E
+_.str.13               = 042951
+_.str.14               = 042959
+_str.3                 = 04296A
+_str.16                = 04296C
+_kbd_hit               = 042796
+_kbd_code              = 0427B0
