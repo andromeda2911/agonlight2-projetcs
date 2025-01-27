@@ -5,10 +5,11 @@
  Last Updated:  26/06/2024
 
  Modinfo:
- 26/06/2024 added function sendpage, seriaFlush, loadPage, fileExt and end
- 28/06/2024 added function zone
- 02/01/2025   add destructor to class
- 02/01/2025   bug fixed on mos_invector
+  26/06/2024 added function sendpage, seriaFlush, loadPage, fileExt and end
+  28/06/2024 added function zone
+  02/01/2025   add destructor to class
+  02/01/2025   bug fixed on mos_invector
+  19/01/2025   change return value of serial_begin
 */
 ////////////////////////////////////////////////////////////////////////word
 /*
@@ -284,7 +285,7 @@ class Minitel
 public:
   Minitel(xUART& serial);
   ~Minitel() { close_serial(); };
-  void serial_begin(int bauds);
+  uint24_t serial_begin(int bauds);
   void *oldvector;
 
   // Ecrire un octet, un mot ou un code de 4 octets maximum / Lire un octet

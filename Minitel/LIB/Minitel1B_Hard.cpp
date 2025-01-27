@@ -4,11 +4,11 @@
  Last Updated:	26/06/2024
 
  Modinfo:
- 26/06/2024 added function sendpage, seriaFlush, loadPage, fileExt and end
- 28/06/2024 added function zone
- 02/01/2025   add destructor to class
- 02/01/2025   bug fixed on mos_invector
-
+  26/06/2024 added function sendpage, seriaFlush, loadPage, fileExt and end
+  28/06/2024 added function zone
+  02/01/2025   add destructor to class
+  02/01/2025   bug fixed on mos_invector
+  19/01/2025   change return value of serial_begin
 */
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -88,7 +88,7 @@ Minitel::Minitel(xUART& serial) : mySerial(serial) {
 }
 /*--------------------------------------------------------------------*/
 
-void Minitel::serial_begin(int b) { 
+uint24_t Minitel::serial_begin(int b) { 
   
   oldvector = NULL;
   mySerial.baudRate = (uint24_t)b;
@@ -101,6 +101,7 @@ void Minitel::serial_begin(int b) {
 	oldvector = mos_setintvector(UART1_IVECT, uart1_handler);  
 	init_UART1();  
 	open_UART1(&mySerial);	
+  return (uint24_t)b;
 }
 
 void Minitel::serial_write(uint8_t c) {
@@ -144,12 +145,12 @@ void Minitel::zone(int lig, int col, int len, const char * s, int color)
 void Minitel::showZone()
 {
   iter = head; 
-  while (iter) {      
+  while (iter) {        
       moveCursorXY(iter->col, iter->lig);
       clearScreenFromCursor();    
       attributs(iter->color);
       print(iter->str);
-      repeat(iter->len);
+      repeat(iter->len);      
       attributs(CARACTERE_BLANC);  
       moveCursorXY(iter->col, iter->lig);
       iter = iter->next;
@@ -562,7 +563,7 @@ void Minitel::newPage(const char * titre) {
   newScreen();
   println(titre);
   for (int i=1; i<=40; i++) {
-    writeByte(0x7E);
+    writeByte(0x5F);
   }
   moveCursorReturn(1); 
 }
